@@ -20,10 +20,12 @@ toponym = json_response["response"]["GeoObjectCollection"][
     "featureMember"][0]["GeoObject"]
 toponym_coordinates = toponym["Point"]["pos"]
 toponym_longitude, toponym_latitude = toponym_coordinates.split(" ")
+coordinates = ",".join([toponym_longitude, toponym_latitude])
 map_params = {
-    "ll": ",".join([toponym_longitude, toponym_latitude]),
+    "ll": coordinates,
     "spn": ",".join(map(str, get_toponym_size(toponym))),
-    "l": "map"
+    "l": "map",
+    "pt": f"{coordinates},comma"
 }
 map_api_server = "http://static-maps.yandex.ru/1.x/"
 response = requests.get(map_api_server, params=map_params)
