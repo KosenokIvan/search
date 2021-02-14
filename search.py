@@ -2,7 +2,7 @@ import sys
 from io import BytesIO
 import requests
 from PIL import Image
-from get_map_coordinates import get_toponym_size
+from get_toponym_size import get_toponym_size
 
 toponym_to_find = " ".join(sys.argv[1:])
 geocoder_api_server = "http://geocode-maps.yandex.ru/1.x/"
